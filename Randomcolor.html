@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandomColor</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="top_left">
+            <h1>My JavaScript Projects</h1>
+
+        </div>
+        <div class="top_right">
+            <ul>
+                <li><a href="index.html">Image Slider</a></li>
+                <li><a href="Accordion.html">Accordion</a></li>
+                <li><a href="imagegallery.html">Image Gallery</a></li>
+                <li><a href="Randomcolor.html">RandomColor</a></li>
+                <li><a href="form.html">Form</a></li>
+                <li><a href="todo.html">Todo</a></li>
+            </ul>
+
+        </div>
+
+    </header>
+    <div class="container_section">
+
+    </div>
+    <div class="overlay">
+
+    </div>
+    <audio id="playSound" src="sound-1-167181.mp3"></audio>
+
+    <script>
+        var container = document.querySelector(".container_section");
+        var overlay = document.querySelector(".overlay");
+        var playSound = document.querySelector("#playSound");
+        var message = ["Copied !", "Well Done !", "Paste Me !", "It'll Rock !", "will do !", "got it !", "right one!"];
+        for (var i = 1; i <= 20; i++) {
+            var box = document.createElement("div");
+            box.classList.add("box");
+            container.appendChild(box);
+
+             
+            var r = parseInt(Math.random() * 256).toString(16).padStart(2, "0");
+            var g = parseInt(Math.random() * 256).toString(16).padStart(2, "0");
+            var b = parseInt(Math.random() * 256).toString(16).padStart(2, "0");
+            var code = "#" + r + g + b;
+            box.style.backgroundColor = code;
+            box.innerText = code;
+
+            var copytext = document.createElement("p");
+            copytext.innerText = "COPY";
+            copytext.classList.add("copy-text");
+            box.appendChild(copytext);
+
+            box.addEventListener(
+                "click",
+                function () {
+                    navigator.clipboard.writeText(this.firstChild.nodeValue)
+                    var selectedColor = this.innerText;
+                    overlay.style.backgroundColor = this.style.backgroundColor;
+                    overlay.style.transform = "scale(1)";
+                    playSound.play();
+                    overlay.innerText = message[parseInt([Math.random() * message.length])];
+                    setTimeout(
+                        function () {
+                            overlay.style.transform = "scale(0)";
+                            overlay.innerText = selectedColor;
+                        }, 1000
+                    )
+                }
+            )
+
+
+
+
+
+
+
+
+        }
+
+    </script>
+
+
+
+
+
+
+
+
+
+   
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+</head>
+
+<body style="background: #e3e7f1;">
+    <header>
+        <div class="top_left">
+            <h1>My JavaScript Projects</h1>
+
+        </div>
+        <div class="top_right">
+            <ul>
+                <li><a href="index.html">Image Slider</a></li>
+                <li><a href="Accordion.html">Accordion</a></li>
+                <li><a href="imagegallery.html">Image Gallery</a></li>
+                <li><a href="Randomcolor.html">RandomColor</a></li>
+                <li><a href="form.html">Form</a></li>
+                <li><a href="todo.html">Todo</a></li>
+            </ul>
+
+        </div>
+
+    </header>
+    <div class="container_todo">
+        <h1>To-Do List <i class="fa-solid fa-list-check"></i></h1>
+        <div class="input-area">
+            <input id="inp" type="text" placeholder="Add a new task...">
+        </div>
+        <ul id="todolist"></ul>
+    </div>
+
+
+    <script>
+        var inp = document.querySelector("#inp");
+        var todolist = document.querySelector("#todolist");
+        inp.addEventListener(
+    "keyup",
+    function (e) {
+        if (this.value != "") {
+            if (e.key === "Enter") {
+                var li = document.createElement("li");
+                li.innerHTML = `${this.value}<span><i class="fa-solid fa-trash"></i></span>`
+                todolist.appendChild(li);
+                 
+                var r = Math.floor(Math.random() * 90) + 10;
+                var g = Math.floor(Math.random() * 90) + 10;
+                var b = Math.floor(Math.random() * 90) + 10;
+                li.style.backgroundColor = "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
+
+                li.addEventListener(
+                    "click",
+                    function () {
+                        this.classList.toggle("demo")
+                    }
+                )
+                li.querySelector("span").addEventListener(
+                    "click",
+                    function () {
+                        li.remove()
+                    }
+                )
+                this.value = "";
+
+            }
+        } else {
+            alert("Write something")
+        }
+
+    }
+)
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <script src="JS/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+    <header>
+        <div class="top_left">
+            <h1>My JavaScript Projects</h1>
+
+        </div>
+        <div class="top_right">
+            <ul>
+                <li><a href="index.html">Image Slider</a></li>
+                <li><a href="Accordion.html">Accordion</a></li>
+                <li><a href="imagegallery.html">Image Gallery</a></li>
+                <li><a href="Randomcolor.html">RandomColor</a></li>
+                <li><a href="form.html">Form</a></li>
+                <li><a href="todo.html">Todo</a></li>
+            </ul>
+
+        </div>
+
+    </header>
+
+    <form id="user_form">
+        <h2>Register With Us</h2>
+        <div class="form_group">
+            <label>Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+            <span id="nameError"></span>
+        </div>
+        <div class="form_group">
+            <label>Email</label>
+            <input type="text" id="email" placeholder="Enter your email">
+            <span id="emailError"></span>
+
+        </div>
+        <div class="form_group">
+            <label>Contact</label>
+            <input type="text" id="contact" placeholder="Enter your phone number">
+            <span id="contactError"></span>
+
+        </div>
+        <div class="form_group">
+            <label>City</label>
+            <input type="text" id="city" placeholder="Enter your city">
+            <span id="cityError"></span>
+
+        </div>
+        <button id="form_btn" type="submit">Submit</button>
+    </form>
+
+
+    <script>
+        var userForm = document.querySelector("#user_form");
+        userForm.addEventListener(
+            "submit",
+            function (e) {
+
+                e.preventDefault();
+
+                var name = document.querySelector("#name").value.trim();
+                var email = document.querySelector("#email").value.trim();
+                var contact = document.querySelector("#contact").value.trim();
+                var city = document.querySelector("#city").value.trim();
+                var nameReg = /^[A-Za-z\s]{3,30}$/;
+
+                var emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                var contactReg = /^[6-9]\d{9}$/;
+
+                var errors = {
+
+                }
+
+                if (!name) {
+                    errors.name = "Name is required.";
+                } else if (!nameReg.test(name)) {
+                    errors.name = "Name is invalid";
+                }
+
+                if (!email) {
+                    errors.email = "Email is required."
+                } else if (!emailReg.test(email)) {
+                    errors.email = "Email is invalid."
+                }
+
+                if (!contact) {
+                    errors.contact = "Contact Number is required."
+                } else if (!contactReg.test(contact)) {
+                    errors.contact = "Contact number is invalid."
+                }
+
+
+                if (!city) {
+                    errors.city = "City is required."
+                }
+
+                var nameError = document.querySelector("#nameError");
+                var emailError = document.querySelector("#emailError");
+                var contactError = document.querySelector("#contactError");
+                var cityError = document.querySelector("#cityError");
+
+                nameError.innerText = errors.name || "";
+                emailError.innerText = errors.email || "";
+                contactError.innerText = errors.contact || "";
+                cityError.innerText = errors.city || "";
+
+                if (Object.keys(errors).length == 0) {
+                    alert("Form submit")
+                    document.querySelector("#user_form").reset();
+                }
+            }
+        )
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

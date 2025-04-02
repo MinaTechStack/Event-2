@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageSlider</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body style="position: relative; background:url(/images/fl-1.jpg) ;">
+    <header>
+        <div class="top_left">
+            <h1>My JavaScript Projects</h1>
+
+        </div>
+        <div class="top_right">
+            <ul>
+                <li><a href="index.html">Image Slider</a></li>
+                <li><a href="Accordion.html">Accordion</a></li>
+                <li><a href="imagegallery.html">Image Gallery</a></li>
+                <li><a href="Randomcolor.html">RandomColor</a></li>
+                <li><a href="form.html">Form</a></li>
+                <li><a href="todo.html">Todo</a></li>
+            </ul>
+
+        </div>
+
+    </header>
+    <div class="container">
+        <div class="item">
+             <img src="images/e.avif" width="100%" height="100%" alt="">
+
+        </div>
+        <div class="item">
+            <img src="images/a.avif" width="100%" height="100%" alt="">
+        </div>
+        <div class="item">
+            <img src="images/b.avif" width="100%" height="100%" alt="">
+    
+        </div>
+        <div class="item">
+            <img src="images/c.avif" width="100%" height="100%" alt="">
+        </div>
+        <div class="item">
+            <img src="images/d.avif" width="100%" height="100%" alt="">
+        </div>
+
+    </div>
+    <div class="my-btn">
+        <button id="btn1" disabled="true" style="background-color: gray;">Prev</button>
+        <button id="btn2">Next</button>
+    </div>
+    <script>
+        var btn1 = document.querySelector("#btn1");
+        var btn2 = document.querySelector("#btn2");
+        var images = document.querySelectorAll(".item");
+        // btn1.disabled = true;
+        var poe = 0;
+        btn2.addEventListener(
+            "click",
+            function (e) {
+                btn1.disabled = false;
+                btn1.style.backgroundColor="blue";
+                if (images.length - 1 == poe) {
+                    btn2.style.backgroundColor = "gray";
+                    return this.disabled = true;
+
+                }
+                poe++;
+                for (img of images) {
+                    img.style.transform = `translateX(-${poe * 100}%)`
+                }
+            }
+        )
+        btn1.addEventListener(
+            "click",
+            function (e) {
+                if (poe == 0) {
+                    btn1.style.backgroundColor = "gray";
+                    btn2.style.backgroundColor="blue";
+                    return this.disabled = true;
+                }
+                poe--;
+                for (img of images) {
+                    img.style.transform = `translateX(-${poe * 100}%)`
+                }
+                btn2.disabled = false;
+            }
+        )
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
