@@ -360,7 +360,7 @@ input:focus {
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin: 30px auto;
-    background: url("/images/sea.avif");
+    background: url("../images/sea.avif");
 }
 
 .container_todo h1 {
